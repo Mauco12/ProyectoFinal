@@ -1,29 +1,18 @@
 package org.example;
 
+import org.example.controlador.ControladorTabla;
 import org.example.modelo.ListaAnimales;
 import org.example.persistencia.ListaAnimalesDAO;
+import org.example.vista.VistadeTabla;
 
 import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
-        ListaAnimalesDAO lis = new ListaAnimalesDAO();
-        try {
-            ListaAnimales resul = (ListaAnimales) lis.buscarPorId("1");
-            System.out.println(resul);
-            System.out.println("----------------");
-            for (Object listaTotal: lis.obtenerTodo()) {
-                System.out.println((ListaAnimales)listaTotal);
-                
-            }
-            
 
-        }catch (SQLException sqle){
-            System.out.println();
-            sqle.printStackTrace();
-        }
-
+        VistadeTabla view = new VistadeTabla("ANIMALES MARINOS");
+        ControladorTabla controlador = new ControladorTabla(view);
 
 
     }

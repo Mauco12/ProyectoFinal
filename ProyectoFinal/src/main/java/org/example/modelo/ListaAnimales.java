@@ -5,19 +5,22 @@ public class ListaAnimales {
     private String nombre;
     private double peso;
     private int largo;
-    private int ancho;
+    private int longevidad;
     private String imagen;
 
     public ListaAnimales() {
     }
 
-    public ListaAnimales(int id, String nombre, double peso, int largo, int ancho, String imagen) {
-        this.id = id;
-        this.nombre = nombre;
-        this.peso = peso;
-        this.largo = largo;
-        this.ancho = ancho;
-        this.imagen = imagen;
+    @Override
+    public String toString() {
+        return "ListaAnimales{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", peso=" + peso +
+                ", largo=" + largo +
+                ", longevidad=" + longevidad +
+                ", imagen='" + imagen + '\'' +
+                '}';
     }
 
     public int getId() {
@@ -52,12 +55,12 @@ public class ListaAnimales {
         this.largo = largo;
     }
 
-    public int getAncho() {
-        return ancho;
+    public int getLongevidad() {
+        return longevidad;
     }
 
-    public void setAncho(int ancho) {
-        this.ancho = ancho;
+    public void setLongevidad(int longevidad) {
+        this.longevidad = longevidad;
     }
 
     public String getImagen() {
@@ -68,15 +71,15 @@ public class ListaAnimales {
         this.imagen = imagen;
     }
 
-    @Override
-    public String toString() {
-        return "ListaAnimales{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", peso=" + peso +
-                ", largo=" + largo +
-                ", ancho=" + ancho +
-                ", imagen='" + imagen + '\'' +
-                '}';
+    public ListaAnimales(int id, String nombre, double peso, int largo, int longevidad, String imagen) {
+        this.id = id;
+        this.nombre = nombre;
+        this.peso = peso;
+        this.largo = largo;
+        this.longevidad = longevidad;
+        this.imagen = imagen;
     }
 }
+
+
+

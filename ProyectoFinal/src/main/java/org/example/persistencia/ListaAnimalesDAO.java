@@ -14,13 +14,13 @@ public class ListaAnimalesDAO implements Interfaz{
 
     @Override
     public boolean insertar(Object obj) throws SQLException {
-        String sqlInsert ="INSERT INTO animales(nombre, peso, largo, ancho, imagen) VALUES (?,?,?,?,?)";
+        String sqlInsert ="INSERT INTO animales(nombre, peso, largo, longevidad, imagen) VALUES (?,?,?,?,?)";
         int rowCount = 0;
         PreparedStatement pstm = ConexionSingleton.get_instance("FaunaMarina.db").getConnection().prepareStatement(sqlInsert);
         pstm.setString(1,((ListaAnimales)obj).getNombre());
         pstm.setDouble(2,((ListaAnimales)obj).getPeso());
         pstm.setInt(3,((ListaAnimales)obj).getLargo());
-        pstm.setInt(4,((ListaAnimales)obj).getAncho());
+        pstm.setInt(4,((ListaAnimales)obj).getLongevidad());
         pstm.setString(5,((ListaAnimales)obj).getImagen());
         rowCount = pstm.executeUpdate();
         return rowCount > 0;
@@ -28,13 +28,13 @@ public class ListaAnimalesDAO implements Interfaz{
 
     @Override
     public boolean update(Object obj) throws SQLException {
-        String sqlUpdate ="UPDATE animales SET nombre = ?, peso = ?, largo = ?, ancho = ?, imagen = ? WHERE id = ? ; ";
+        String sqlUpdate ="UPDATE animales SET nombre = ?, peso = ?, largo = ?, longevidad = ?, imagen = ? WHERE id = ? ; ";
         int rowCount = 0;
         PreparedStatement pstm = ConexionSingleton.get_instance("FaunaMarina.db").getConnection().prepareStatement(sqlUpdate);
         pstm.setString(1,((ListaAnimales)obj).getNombre());
         pstm.setDouble(2,((ListaAnimales)obj).getPeso());
         pstm.setInt(3,((ListaAnimales)obj).getLargo());
-        pstm.setInt(4,((ListaAnimales)obj).getAncho());
+        pstm.setInt(4,((ListaAnimales)obj).getLongevidad());
         pstm.setString(5,((ListaAnimales)obj).getImagen());
         pstm.setInt(6,((ListaAnimales)obj).getId());
         rowCount = pstm.executeUpdate();
