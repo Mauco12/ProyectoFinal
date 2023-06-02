@@ -140,6 +140,22 @@ public class ModeloTablaAnimales implements TableModel {
         }catch (SQLException sqle){
             System.out.println(sqle.getMessage());
         }
+    }
 
+    public boolean agregarAnimal(ListaAnimales lista){
+        boolean resultado = false;
+        try{
+            if (lisdao.insertar(lista)){
+                datos.add(lista );
+                resultado = true;
+
+            }else {
+                resultado = false;
+
+            }
+        }catch (SQLException sqle){
+            System.out.println(sqle.getMessage());
+        }
+        return resultado;
     }
 }

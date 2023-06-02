@@ -264,4 +264,11 @@ public class VistadeTabla extends JFrame {
     public void setBtnBaseDatos(JButton btnBaseDatos) {
         this.btnBaseDatos = btnBaseDatos;
     }
+    public void limpiar(){
+    txtNombre.setText("");
+    txtPeso.setText("");
+    txtLargo.setText("");
+    txtLongevidad.setText("");
+    txtImagen.setText("");
+    }
 }
