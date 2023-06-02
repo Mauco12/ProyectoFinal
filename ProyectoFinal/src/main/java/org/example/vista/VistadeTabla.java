@@ -1,7 +1,12 @@
 package org.example.vista;
 
+import javax.imageio.IIOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class VistadeTabla extends JFrame {
     private JLabel lblId;
@@ -24,6 +29,7 @@ public class VistadeTabla extends JFrame {
     private JPanel panel1; //Formulario para dar de alta
     private JPanel panel2; //Tabla que muestra la base de datos
     private JPanel panel3; // Muestra la imagen
+    private JLabel etiquetaPanel3;
     private JPanel panel4; //eliminar datos
 
 
@@ -79,8 +85,11 @@ public class VistadeTabla extends JFrame {
 
 
         //PANEL3
+        String urlImagen = String.valueOf(getTxtImagen());
         panel3 = new JPanel(new FlowLayout());
         panel3.setBackground(new Color(13, 101, 69, 210));
+
+
 
 
         //PANEL4
