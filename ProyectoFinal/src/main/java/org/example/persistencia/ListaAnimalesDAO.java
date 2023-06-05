@@ -46,6 +46,7 @@ public class ListaAnimalesDAO implements Interfaz{
         int rowCount = 0;
         PreparedStatement pstm = ConexionSingleton.get_instance("FaunaMarina.db").getConnection().prepareStatement(sqlDelete);
         pstm.setInt(1,Integer.parseInt(id));
+        rowCount = pstm.executeUpdate();
         return rowCount>0;
     }
 

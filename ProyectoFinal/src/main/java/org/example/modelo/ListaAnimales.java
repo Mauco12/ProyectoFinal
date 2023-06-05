@@ -86,6 +86,17 @@ public class ListaAnimales {
         this.imagen = imagen;
     }
 
+    public ImageIcon createIcon(){
+        ImageIcon resultado = null;
+        try{
+            URL UrlAnimal = new URL(this.imagen);
+            resultado = new ImageIcon(UrlAnimal);
+        }catch (MalformedURLException malformedURLException){
+            System.out.println(malformedURLException.toString());
+        }
+        return resultado;
+    }
+
 
     
 

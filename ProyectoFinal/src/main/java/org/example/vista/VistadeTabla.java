@@ -10,6 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class VistadeTabla extends JFrame {
+    //Atributos panel1
     private JLabel lblId;
     private JLabel lblNombre;
     private JLabel lblPeso;
@@ -23,15 +24,21 @@ public class VistadeTabla extends JFrame {
     private JTextField txtLongevidad;
     private JTextField txtImagen;
     private JButton btnAgregar;
+    private JLabel lblAgregar;
+    private JPanel panel1; //Formulario para dar de alta
+    //Atributos panel2
+    private JPanel panel2; //Tabla que muestra la base de datos
     private JButton btnBaseDatos;
     private JTable tblAnimales;
     private JScrollPane scrollPane;
-    private GridLayout layout;
-    private JPanel panel1; //Formulario para dar de alta
-    private JPanel panel2; //Tabla que muestra la base de datos
+    //Atributos panel3
     private JPanel panel3; // Muestra la imagen
-    /////
+    private ModeloTablaAnimales modelo;
+    private JLabel lblFoto;
+
+    //Atributos panel4
     private JPanel panel4; //eliminar datos
+    private GridLayout layout;
     private JLabel lblIdPanel4;
     private JLabel lblNombrePanel4;
     private JLabel lblPesoPanel4;
@@ -50,9 +57,6 @@ public class VistadeTabla extends JFrame {
     private JTextField txtEliminar;
     private JButton btnEliminar;
 
-
-
-
         //Configuracion de JFrame
     public VistadeTabla(String title) throws HeadlessException {
         super(title);
@@ -65,12 +69,14 @@ public class VistadeTabla extends JFrame {
         //PANEL1
         panel1 = new JPanel(new FlowLayout());
         panel1.setBackground(new Color(19, 147, 132, 210));
+
         lblId = new JLabel("Id: ");
         lblNombre = new JLabel("Nombre: ");
         lblPeso = new JLabel("Peso: ");
         lblLargo = new JLabel("Largo: ");
         lblLongevidad = new JLabel("Longevidad: ");
         lblImagen = new JLabel("URL : ");
+
         txtId = new JTextField(3);
         txtId.setText("0");
         txtId.setEnabled(false);
@@ -78,8 +84,10 @@ public class VistadeTabla extends JFrame {
         txtPeso = new JTextField(10);
         txtLargo = new JTextField(10);
         txtLongevidad = new JTextField(10);
-        txtImagen = new JTextField(75);
+        txtImagen = new JTextField(40);
+
         btnAgregar = new JButton("Agregar");
+
         panel1.add(lblId);
         panel1.add(txtId);
         panel1.add(lblNombre);
@@ -111,6 +119,9 @@ public class VistadeTabla extends JFrame {
         //PANEL3
         panel3 = new JPanel(new FlowLayout());
         panel3.setBackground(new Color(13, 101, 69, 210));
+        lblFoto = new JLabel("Foto");
+        this.panel3.add(lblFoto);
+
 
 
         //PANEL4
@@ -153,24 +164,6 @@ public class VistadeTabla extends JFrame {
         panel4.add(lblEliminar);
         panel4.add(txtEliminar);
         panel4.add(btnEliminar);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -491,6 +484,30 @@ public class VistadeTabla extends JFrame {
 
     public void setBtnEliminar(JButton btnEliminar) {
         this.btnEliminar = btnEliminar;
+    }
+
+    public ModeloTablaAnimales getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(ModeloTablaAnimales modelo) {
+        this.modelo = modelo;
+    }
+
+    public JLabel getLblFoto() {
+        return lblFoto;
+    }
+
+    public void setLblFoto(JLabel lblFoto) {
+        this.lblFoto = lblFoto;
+    }
+
+    public JLabel getLblAgregar() {
+        return lblAgregar;
+    }
+
+    public void setLblAgregar(JLabel lblAgregar) {
+        this.lblAgregar = lblAgregar;
     }
 
     public void limpiar(){

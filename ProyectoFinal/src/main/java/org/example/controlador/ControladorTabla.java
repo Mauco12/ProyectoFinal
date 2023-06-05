@@ -105,6 +105,13 @@ public class ControladorTabla extends MouseAdapter {
                 this.view.LimpiarPanel4();
             }
         }
+        if(e.getSource()==this.view.getTblAnimales()){
+            int rowIndex = this.view.getTblAnimales().getSelectedRow();
+            modelo.obtenerLista(rowIndex);
+            ListaAnimales temp = modelo.obtenerLista(rowIndex);
+            this.view.getLblFoto().setText("");
+            this.view.getLblFoto().setIcon(temp.createIcon());
+        }
 
 
     }
