@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 public class ModeloTablaAnimales implements TableModel {
     public static final int COLUMNS = 6;
-
     private ArrayList<ListaAnimales> datos;
     private ListaAnimalesDAO lisdao;
 
@@ -17,9 +16,11 @@ public class ModeloTablaAnimales implements TableModel {
         lisdao = new ListaAnimalesDAO();
         datos = new ArrayList<>();
     }
+    public ModeloTablaAnimales(ArrayList<ListaAnimales>datos){
+        this.datos = datos;
+        lisdao=new ListaAnimalesDAO();
 
-
-
+    }
 
     @Override
     public int getRowCount() {
@@ -151,11 +152,44 @@ public class ModeloTablaAnimales implements TableModel {
 
             }else {
                 resultado = false;
-
             }
         }catch (SQLException sqle){
             System.out.println(sqle.getMessage());
         }
         return resultado;
     }
+
+    public boolean delete(ListaAnimales lista){
+        boolean resultado = false;
+        try {
+            if (lisdao.delete(String.valueOf(lista))){
+                datos.add(lista);
+                resultado=true;
+            }else {
+                resultado=false;
+            }
+        }catch (SQLException sqle){
+            System.out.println(sqle.getMessage());
+        }
+        return resultado;
+    }
+
+    public boolean updateAnimal(ListaAnimales lista){
+        boolean resultado = false;
+        try {
+            if (lisdao.update(lista)){
+                datos.add(lista);
+                resultado=true;
+            }else {
+                resultado=false;
+            }
+        }catch (SQLException sqle){
+            System.out.println(sqle.getMessage());
+        }
+        return resultado;
+    }
+    public ListaAnimales obtenerLista(int rowIndex){
+        return datos.get(rowIndex);
+    }
+
 }

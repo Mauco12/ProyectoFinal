@@ -1,5 +1,10 @@
 package org.example.modelo;
 
+import javax.swing.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+//LA CLASE EN LA CUAL VA A CONTENER TODOS LOS ATRIBUTOS DE LA TABLA
 public class ListaAnimales {
     private int id;
     private String nombre;
@@ -9,7 +14,9 @@ public class ListaAnimales {
     private String imagen;
 
     public ListaAnimales() {
+
     }
+
 
     @Override
     public String toString() {
@@ -22,7 +29,6 @@ public class ListaAnimales {
                 ", imagen='" + imagen + '\'' +
                 '}';
     }
-
     public int getId() {
         return id;
     }
@@ -79,6 +85,14 @@ public class ListaAnimales {
         this.longevidad = longevidad;
         this.imagen = imagen;
     }
+
+
+    
+
+
+
+
+
 }
 
 

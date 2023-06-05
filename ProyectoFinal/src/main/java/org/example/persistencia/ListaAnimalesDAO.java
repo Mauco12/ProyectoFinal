@@ -41,16 +41,14 @@ public class ListaAnimalesDAO implements Interfaz{
         return rowCount > 0;
     }
 
-    @Override
     public boolean delete(String id) throws SQLException {
         String sqlDelete = "DELETE FROM animales WHERE id = ? ;";
         int rowCount = 0;
         PreparedStatement pstm = ConexionSingleton.get_instance("FaunaMarina.db").getConnection().prepareStatement(sqlDelete);
         pstm.setInt(1,Integer.parseInt(id));
-        rowCount = pstm.executeUpdate();
-
-        return rowCount > 0;
+        return rowCount>0;
     }
+
 
     @Override
     public ArrayList obtenerTodo() throws SQLException {

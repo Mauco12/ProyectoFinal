@@ -1,5 +1,7 @@
 package org.example.persistencia;
 
+import org.example.modelo.ListaAnimales;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
 
