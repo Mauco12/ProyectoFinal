@@ -326,6 +326,7 @@ public class VistadeTabla extends JFrame {
     }
 
 
+
     public JPanel getPanel4() {
         return panel4;
     }
