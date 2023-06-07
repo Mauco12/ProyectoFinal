@@ -1,16 +1,18 @@
 package org.example.persistencia;
-
 import org.example.modelo.ListaAnimales;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+
 public class ListaAnimalesDAO implements Interfaz{
+
+
     public ListaAnimalesDAO() {
     }
+
 
     @Override
     public boolean insertar(Object obj) throws SQLException {
@@ -25,6 +27,7 @@ public class ListaAnimalesDAO implements Interfaz{
         rowCount = pstm.executeUpdate();
         return rowCount > 0;
     }
+
 
     @Override
     public boolean update(Object obj) throws SQLException {
@@ -41,6 +44,7 @@ public class ListaAnimalesDAO implements Interfaz{
         return rowCount > 0;
     }
 
+
     public boolean delete(String id) throws SQLException {
         String sqlDelete = "DELETE FROM animales WHERE id = ? ;";
         int rowCount = 0;
@@ -55,7 +59,6 @@ public class ListaAnimalesDAO implements Interfaz{
     public ArrayList obtenerTodo() throws SQLException {
         String sql = "SELECT * FROM animales";
         ArrayList<ListaAnimales> resultado = new ArrayList<>();
-
         Statement stm = ConexionSingleton.get_instance("FaunaMarina.db").getConnection().createStatement();
         ResultSet rst = stm.executeQuery(sql);
         while (rst.next()){
@@ -64,11 +67,11 @@ public class ListaAnimalesDAO implements Interfaz{
         return resultado;
     }
 
+
     @Override
     public Object buscarPorId(String id) throws SQLException {
         String sql = "SELECT * FROM animales WHERE id = ? ;";
         ListaAnimales Lista = null;
-
         PreparedStatement pstm = ConexionSingleton.get_instance("FaunaMarina.db").getConnection().prepareStatement(sql);
         pstm.setInt(1,Integer.parseInt(id));
         ResultSet rst = pstm.executeQuery();

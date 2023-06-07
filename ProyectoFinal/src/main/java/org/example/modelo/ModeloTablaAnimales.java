@@ -1,7 +1,5 @@
 package org.example.modelo;
-
 import org.example.persistencia.ListaAnimalesDAO;
-
 import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 import java.sql.SQLException;
@@ -12,25 +10,30 @@ public class ModeloTablaAnimales implements TableModel {
     private ArrayList<ListaAnimales> datos;
     private ListaAnimalesDAO lisdao;
 
+
     public ModeloTablaAnimales() {
         lisdao = new ListaAnimalesDAO();
         datos = new ArrayList<>();
     }
+
+
     public ModeloTablaAnimales(ArrayList<ListaAnimales>datos){
         this.datos = datos;
         lisdao=new ListaAnimalesDAO();
-
     }
+
 
     @Override
     public int getRowCount() {
         return datos.size();
     }
 
+
     @Override
     public int getColumnCount() {
         return COLUMNS;
     }
+
 
     @Override
     public String getColumnName(int columnIndex) {
@@ -47,10 +50,10 @@ public class ModeloTablaAnimales implements TableModel {
                 return "Longevidad";
             case 5:
                 return "Imagen";
-
         }
         return null;
     }
+
 
     @Override
     public Class<?> getColumnClass(int columnIndex) {
@@ -67,15 +70,16 @@ public class ModeloTablaAnimales implements TableModel {
                 return Integer.class;
             case 5:
                 return String.class;
-
         }
         return null;
     }
+
 
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex) {
         return true;
     }
+
 
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
@@ -96,6 +100,7 @@ public class ModeloTablaAnimales implements TableModel {
         }
         return null;
     }
+
 
     @Override
     public void setValueAt(Object a, int rowIndex, int columnIndex) {
@@ -120,20 +125,20 @@ public class ModeloTablaAnimales implements TableModel {
                 break;
             default:
                 System.out.println("No se modifica nada");
-
         }
-
     }
+
 
     @Override
     public void addTableModelListener(TableModelListener l) {
-
     }
+
 
     @Override
     public void removeTableModelListener(TableModelListener l) {
 
     }
+
 
     public void cargarDatos(){
         try {
@@ -143,13 +148,13 @@ public class ModeloTablaAnimales implements TableModel {
         }
     }
 
+
     public boolean agregarAnimal(ListaAnimales lista){
         boolean resultado = false;
         try{
             if (lisdao.insertar(lista)){
                 datos.add(lista );
                 resultado = true;
-
             }else {
                 resultado = false;
             }
@@ -158,6 +163,7 @@ public class ModeloTablaAnimales implements TableModel {
         }
         return resultado;
     }
+
 
     public boolean delete(ListaAnimales lista){
         boolean resultado = false;
@@ -174,6 +180,7 @@ public class ModeloTablaAnimales implements TableModel {
         return resultado;
     }
 
+
     public boolean updateAnimal(ListaAnimales lista){
         boolean resultado = false;
         try {
@@ -188,8 +195,9 @@ public class ModeloTablaAnimales implements TableModel {
         }
         return resultado;
     }
+
+
     public ListaAnimales obtenerLista(int rowIndex){
         return datos.get(rowIndex);
     }
-
 }

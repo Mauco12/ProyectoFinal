@@ -1,5 +1,4 @@
 package org.example.persistencia;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -20,6 +19,8 @@ public class ConexionSingleton {
             e.printStackTrace();
         }
     }
+
+
     public static ConexionSingleton get_instance(String baseDatos) {
         if(_instance == null){
             _instance = new ConexionSingleton(baseDatos);
@@ -28,6 +29,7 @@ public class ConexionSingleton {
         }
         return _instance;
     }
+
 
     public Connection getConnection(){
         return connection;

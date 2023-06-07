@@ -11,27 +11,37 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ControladorTabla extends MouseAdapter {
+
+
     private VistadeTabla view;
+
+
     private ModeloTablaAnimales modelo;
+
 
     public ControladorTabla(VistadeTabla view) {
         this.view = view;
         modelo = new ModeloTablaAnimales();
         this.view.getTblAnimales().setModel(modelo);
+        this.view.getTblAnimales().addMouseListener(this);
         this.view.getBtnBaseDatos().addMouseListener(this);
         this.view.getBtnAgregar().addMouseListener(this);
         this.view.getBtnUpdate().addMouseListener(this);
         this.view.getBtnEliminar().addMouseListener(this);
     }
 
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        //Configuracion del boton para mostrar los datos de la tabla
+
+
+        //Configuracion del boton para mostrar los datos de la base de datos
         if (e.getSource() == this.view.getBtnBaseDatos()) {
             modelo.cargarDatos();
             this.view.getTblAnimales().setModel(modelo);
             this.view.getTblAnimales().updateUI();
         }
+
 
         //Configuracion del boton para agregar informacion a la base de datos
         if (e.getSource() == this.view.getBtnAgregar()) {
@@ -47,12 +57,12 @@ public class ControladorTabla extends MouseAdapter {
                 this.view.getTblAnimales().updateUI();
             } else {
                 JOptionPane.showMessageDialog(view, "No se pudo agregar a la base de datos", "Error al insertar", JOptionPane.ERROR_MESSAGE);
-
             }
             this.view.limpiar();
         }
 
-        //Eliminar
+
+        //Configuracion del boton para eliminar informacion de la base de datos
         if (e.getSource() == this.view.getBtnEliminar()){
             int respuesta = JOptionPane.showConfirmDialog(view, "¿Deseas eliminar este elemento?","Eliminar",JOptionPane.YES_NO_OPTION);
             if (respuesta == 0){
@@ -83,6 +93,7 @@ public class ControladorTabla extends MouseAdapter {
             }
         }
 
+        //Configuracion del boton para actualizar informacion de la base de datos
         if (e.getSource()==this.view.getBtnUpdate()){
             int respuesta = JOptionPane.showConfirmDialog(view,"¿Quieres actualizar el dato?","Actualizar datos",JOptionPane.YES_NO_OPTION);
             if (respuesta==0){
@@ -105,6 +116,8 @@ public class ControladorTabla extends MouseAdapter {
                 this.view.LimpiarPanel4();
             }
         }
+
+        //Configuracion para crear el icono y sea mostrado en el panel 3
         if(e.getSource()==this.view.getTblAnimales()){
             int rowIndex = this.view.getTblAnimales().getSelectedRow();
             modelo.obtenerLista(rowIndex);
@@ -112,7 +125,5 @@ public class ControladorTabla extends MouseAdapter {
             this.view.getLblFoto().setText("");
             this.view.getLblFoto().setIcon(temp.createIcon());
         }
-
-
     }
 }
